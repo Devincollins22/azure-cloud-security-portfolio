@@ -1,0 +1,39 @@
+name: Landing Zone Security Checks
+
+# When to run: any push or pull request that changes the landing zone
+on:
+  push:
+    paths: ["01-landing-zone/**"]
+  pull_request:
+    paths: ["01-landing-zone/**"]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 01-landing-zone/terraform
+
+    steps:
+      # 1. Download your code onto GitHub's server
+      - uses: actions/checkout@v4
+
+      # 2. Install Terraform
+      - uses: hashicorp/setup-terraform@v3
+
+      # 3. Format check: fails if code isn't neatly formatted
+      - name: Terraform format
+        run: terraform fmt -check -recursive
+
+      # 4. Validate: catches typos and broken references
+      #    (-backend=false = no Azure login needed, nothing gets built)
+      - name: Terraform validate
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+      # 5. Security scan: checks your code against hundreds of security rules
+      - name: Checkov security scan
+        run: |
+          pip install checkov
+          checkov -d . --framework terraform
