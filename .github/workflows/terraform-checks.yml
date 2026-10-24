@@ -1,18 +1,18 @@
-name: Landing Zone Security Checks
+name: Terraform Security Checks
 
 # When to run: any push or pull request that changes the landing zone
 on:
   push:
-    paths: ["01-landing-zone/**"]
+    paths: ["domain-2-storage-networking/**"]
   pull_request:
-    paths: ["01-landing-zone/**"]
+    paths: ["domain-2-storage-networking/**"]
 
 jobs:
   checks:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: 01-landing-zone/terraform
+        working-directory: domain-2-storage-networking/terraform
 
     steps:
       # 1. Download your code onto GitHub's server

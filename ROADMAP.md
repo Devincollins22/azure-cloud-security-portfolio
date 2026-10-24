@@ -1,30 +1,35 @@
-# Roadmap: Cloud & AI Security Engineer
+# Roadmap: SC-500 + Domain Labs
 
-**Goal:** Pass SC-500, build 3 strong projects, and land a cloud/AI security engineering role.
+**Goal:** Pass SC-500 (early December 2026) with one hands-on lab per exam domain.
+**Subscription:** Azure for Students (Canisius) · **Region:** `westus` (subscription policy allows only belgiumcentral, norwayeast, denmarkeast, westus, francecentral)
 
-| When | Focus | Milestone |
+## Weekly plan
+
+| Week | Study (Microsoft Learn) | Lab |
 |---|---|---|
-| Oct → early Dec 2026 | SC-500 study + **Project 1: Secure Azure Landing Zone** | Project 1 on GitHub |
-| Early Dec 2026 | Exam | **SC-500 passed** |
-| Dec 2026 → Jan 2027 | **Project 2: Multicloud Posture** (AWS + Defender for Cloud) | Project 2 on GitHub |
-| Feb → Mar 2027 | **Project 3: Secured AI Workload** | Project 3 on GitHub |
-| Feb → May 2027 | Resume, LinkedIn, interview practice | **Applying from February** |
+| Oct 26 | Domain 1: Entra, Key Vault, governance | **Lab 1** (weekend) |
+| Nov 2 | Domain 2: storage, databases, networking | **Lab 2** (weekend) |
+| Nov 9 | Domain 3: VMs, containers, App Service | **Lab 3** (weekend) |
+| Nov 16 | Domain 3: AI security | — |
+| Nov 23 | Domain 4: Defender for Cloud, Sentinel, Security Copilot | **Lab 4** + **practice checkpoint** |
+| Nov 30 | Review weak areas, timed practice | **Exam** |
 
-## The 3 projects
+**Checkpoint (Nov 23):** practice score ~75%+ → keep the exam date. Well below → reschedule to January.
 
-### 01 – Secure Azure Landing Zone
-Terraform-built Azure environment: hub-and-spoke network, Azure Firewall, private endpoints, Key Vault with managed identities, and Azure Policy guardrails.
-**Shows:** infrastructure as code, network security, identity, governance (SC-500 Domains 1–2).
+## Weekly rhythm
+- **Weekdays (~1 hr):** one Learn module; write one line per feature: *what it does + when to use it*.
+- **Weekend:** finish the week's modules, run the lab, take a 10-question quiz.
 
-### 02 – Multicloud Posture Management
-Connect AWS and Azure to Microsoft Defender for Cloud, map findings to CIS/NIST, and automate remediation.
-**Shows:** multicloud security, CSPM, compliance (SC-500 Domain 4).
+## Labs
 
-### 03 – Secured AI Workload
-AI model behind private networking and API Management, with keyless auth, content filters / Prompt Shields, and Defender for AI.
-**Shows:** AI security — the newest, most in-demand skill (SC-500 Domain 3).
+| Lab | Folder | Proves |
+|---|---|---|
+| 1 | [domain-1-identity-governance](domain-1-identity-governance) | Key Vault RBAC, soft delete, purge protection, Azure Policy Deny, resource locks |
+| 2 | [domain-2-storage-networking](domain-2-storage-networking) | Three-tier VNet + NSGs, locked-down storage behind a private endpoint |
+| 3 | [domain-3-compute-ai](domain-3-compute-ai) | Hardened VM (no public IP, trusted launch, encryption); AI guardrails if available |
+| 4 | [domain-4-posture-monitoring](domain-4-posture-monitoring) | Defender for Cloud secure score, recommendations, compliance mapping |
 
 ## Rules
-- Never commit secrets, keys, or subscription IDs.
-- Tear down resources the same day to protect the $100 credit.
-- Every project README covers: problem → what I built → proof → results → what I learned.
+- Never commit secrets, keys, tenant IDs, or subscription IDs. Blur them in screenshots.
+- Tear down every lab the same day (`terraform destroy` or `az group delete`).
+- PIM and Conditional Access can't be done hands-on (school tenant blocks admin) — study them from Learn.

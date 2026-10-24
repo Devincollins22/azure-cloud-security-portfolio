@@ -44,3 +44,4 @@ terraform.rc
 # planout
 # macOS
 .DS_Store
+Claude outputs/
